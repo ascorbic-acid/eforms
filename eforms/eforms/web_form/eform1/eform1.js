@@ -9,7 +9,7 @@ function isSubmitted() {
     if(web_form_settings.doc_name) {
         frappe.call({
             method: "eforms.api.get_seen",
-            args: {"dt": web_form_settings.web_form_doctype, "dn": web_form_settings.doc_name},
+            args: {dt: web_form_settings.web_form_doctype, dn: web_form_settings.doc_name},
             callback: function(r) {
                if (r.message == 0) {
                 console.log("correct")
@@ -20,7 +20,7 @@ function isSubmitted() {
                 frappe.msgprint(success_msg, success_title);
                 frappe.call({
                     method: "eforms.api.set_seen",
-                    args: {"dt": web_form_settings.web_form_doctype, "dn": web_form_settings.doc_name},
+                    args: {dt: web_form_settings.web_form_doctype, dn: web_form_settings.doc_name},
                     callback: function(r) {
                         console.log(r)
                     }
@@ -31,21 +31,28 @@ function isSubmitted() {
     }
 }
 function set_props() {
-    let sts = document.querySelector('[data-fieldtype="HTML"]');
-    let fieldStatus = sts.innerHTML;
-    // if save button clicked and the status is Completed then set fields as Read Only (Client side).
-    if(fieldStatus =="Open" || fieldStatus == null) {
-        sts.innerHTML = `<label class="control-label" style="padding-right: 0px;" for="sts">Status</label> <br> 
-        <span id="sts" class="indicator green"><span class="hidden-xs">${fieldStatus}</span></span>`
-    } 
-    else if (fieldStatus == "Completed"){
-        sts.innerHTML = `<label class="control-label" style="padding-right: 0px;" for="sts">Status</label> <br> 
-        <span id="sts" class="indicator grey"><span class="hidden-xs">${fieldStatus}</span></span>`
-        for(let field in fields){
-            document.querySelector(`[placeholder][data-fieldtype][data-fieldname="${fields[field]}"]`).setAttribute("disabled", "1")
+    let sts = document.getElementById("sts");
+    
+    frappe.call({
+        method: "eforms.api.get_ticket_status",
+        args: {dt: web_form_settings.web_form_doctype, dn: web_form_settings.doc_name},
+        callback: function(r) {
+            let ticketStatus = r.message
+            // if save button clicked and the status is Completed then set fields as Read Only (Client side).
+            if(ticketStatus =="Open") {
+                sts.innerHTML = `<label class="control-label" style="padding-right: 0px;" for="sts">Status</label> <br> 
+                <span id="sts" class="indicator green"><span class="hidden-xs">${ticketStatus}</span></span>`
+            } 
+            else if (ticketStatus == "Completed"){
+                sts.innerHTML = `<label class="control-label" style="padding-right: 0px;" for="sts">Status</label> <br> 
+                <span id="sts" class="indicator grey"><span class="hidden-xs">${ticketStatus}</span></span>`
+                for(let field in fields){
+                    document.querySelector(`[placeholder][data-fieldtype][data-fieldname="${fields[field]}"]`).setAttribute("disabled", "1")
+                }
+            }
         }
+    });
 
-    }
     // check if submitted to the server and show message
     setTimeout(isSubmitted, 1000);
 }
@@ -53,7 +60,7 @@ frappe.ready(function() {
     // bind events here
 
     // give some time for the web form fields to be loaded.
-    setTimeout(set_props, 800);
+    setTimeout(set_props, 500);
 
         // hook the upper save button
     document.getElementsByClassName("btn-primary")[0].addEventListener("click", function(e) {

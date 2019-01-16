@@ -8,3 +8,8 @@ def get_seen(dt,dn):
 def set_seen():
     df = frappe.db.set_value("eForm1", "EF001", "meta_seen", 1)
     return "set"
+@frappe.whitelist()
+def get_ticket_status(dt, dn):
+    df = frappe.db.get_value(dt, dn, "status")
+    return df
+
