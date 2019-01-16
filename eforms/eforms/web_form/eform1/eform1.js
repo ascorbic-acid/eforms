@@ -31,7 +31,7 @@ function isSubmitted() {
     }
 }
 function set_props() {
-    let sts = document.querySelector('[data-fieldname="status"]');
+    let sts = document.querySelector('[data-fieldtype="HTML"]');
     let fieldStatus = sts.innerHTML;
     // if save button clicked and the status is Completed then set fields as Read Only (Client side).
     if(fieldStatus =="Open" || fieldStatus == null) {
