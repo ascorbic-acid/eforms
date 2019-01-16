@@ -47,7 +47,7 @@ function set_props() {
                 sts.innerHTML = `<label class="control-label" style="padding-right: 0px;" for="sts">Status</label> <br> 
                 <span id="sts" class="indicator grey"><span class="hidden-xs">${ticketStatus}</span></span>`
                 for(let field in fields){
-                    document.querySelector(`[placeholder][data-fieldtype][data-fieldname="${fields[field]}"]`).setAttribute("disabled", "1")
+                    document.querySelector(`[data-fieldtype][data-fieldname="${fields[field]}"]`).setAttribute("disabled", "1")
                 }
             }
         }
@@ -60,7 +60,7 @@ frappe.ready(function() {
     // bind events here
 
     // give some time for the web form fields to be loaded.
-    setTimeout(set_props, 500);
+    setTimeout(set_props, 800);
 
         // hook the upper save button
     document.getElementsByClassName("btn-primary")[0].addEventListener("click", function(e) {
