@@ -14,10 +14,11 @@
  "docstatus": 0, 
  "doctype": "Web Form", 
  "idx": 0, 
+ "introduction_text": "", 
  "is_standard": 1, 
  "login_required": 1, 
  "max_attachment_size": 0, 
- "modified": "2019-01-20 16:13:58.920299", 
+ "modified": "2019-01-20 22:41:40.256620", 
  "modified_by": "Administrator", 
  "module": "Eforms", 
  "name": "eform1", 
@@ -25,16 +26,12 @@
  "payment_button_label": "Buy Now", 
  "published": 1, 
  "route": "eform1", 
- "route_to_success_link": 0, 
- "show_attachments": 0, 
- "show_in_grid": 0, 
  "show_sidebar": 1, 
  "sidebar_items": [], 
  "success_url": "/eform1", 
  "title": "eForm1", 
  "web_form_fields": [
   {
-   "allow_read_on_all_link_options": 0, 
    "default": "", 
    "fieldname": "status", 
    "fieldtype": "Select", 
@@ -44,22 +41,18 @@
    "max_value": 0, 
    "options": "Open\nCompleted", 
    "read_only": 1, 
-   "reqd": 0, 
-   "show_in_filter": 0
+   "reqd": 0
   }, 
   {
-   "allow_read_on_all_link_options": 0, 
    "fieldname": "", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 
-   "reqd": 0, 
-   "show_in_filter": 0
+   "reqd": 0
   }, 
   {
-   "allow_read_on_all_link_options": 0, 
    "fieldname": "supplier", 
    "fieldtype": "Link", 
    "hidden": 0, 
@@ -68,22 +61,18 @@
    "max_value": 0, 
    "options": "Supplier", 
    "read_only": 0, 
-   "reqd": 0, 
-   "show_in_filter": 0
+   "reqd": 0
   }, 
   {
-   "allow_read_on_all_link_options": 0, 
    "fieldname": "", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 
-   "reqd": 0, 
-   "show_in_filter": 0
+   "reqd": 0
   }, 
   {
-   "allow_read_on_all_link_options": 0, 
    "fieldname": "contact", 
    "fieldtype": "Link", 
    "hidden": 0, 
@@ -92,22 +81,18 @@
    "max_value": 0, 
    "options": "Contact", 
    "read_only": 0, 
-   "reqd": 0, 
-   "show_in_filter": 0
+   "reqd": 0
   }, 
   {
-   "allow_read_on_all_link_options": 0, 
    "fieldname": "", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 
-   "reqd": 0, 
-   "show_in_filter": 0
+   "reqd": 0
   }, 
   {
-   "allow_read_on_all_link_options": 0, 
    "fieldname": "description", 
    "fieldtype": "Text", 
    "hidden": 0, 
@@ -115,8 +100,18 @@
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 
-   "reqd": 0, 
-   "show_in_filter": 0
+   "reqd": 0
+  }, 
+  {
+   "default": "no", 
+   "fieldname": "meta_seen", 
+   "fieldtype": "Data", 
+   "hidden": 0, 
+   "label": "META_seen", 
+   "max_length": 0, 
+   "max_value": 0, 
+   "read_only": 0, 
+   "reqd": 0
   }
  ]
 }

@@ -3,6 +3,7 @@
 
 frappe.ui.form.on('eForm1', {
 	refresh: function(frm) {
-
+		let META_seen = document.querySelector('[data-fieldtype][data-fieldname="meta_seen"]');
+		META_seen.style.visibility = "hidden";
 	}
 });
